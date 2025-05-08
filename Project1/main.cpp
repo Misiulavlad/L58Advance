@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
-int Divide_and_Conquer(int length, int width) {
+int divide_and_conquer(int length, int width) {
 	if (width == 0)
 		return length;
-	return Divide_and_Conquer(width, length % width);
+	return divide_and_conquer(width, length % width);
 }
 
 int main() {
@@ -26,7 +26,12 @@ int main() {
 		cin >> width;
 	}
 
-	int result = Divide_and_Conquer(length, width);
+	while (width <= 0 || width > length) {
+		cout << "Invalid data. Try again. Width must be less than length." << endl;
+		cin >> width;
+	}
+
+	int result = divide_and_conquer(length, width);
 
 	cout << "Result is: " << result << " X " << result;
 	return 0;
